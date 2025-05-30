@@ -42,7 +42,7 @@ const JobCard = ({ job }) => {
           <p>{description}</p>
 
           <div className="card-actions ">
-            {requirements.map((skill, index) => (
+            {requirements?.map((skill, index) => (
               <div key={index} className="badge badge-outline bg-red-100">
                 {skill}
               </div>

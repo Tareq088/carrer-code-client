@@ -1,5 +1,7 @@
 import React from "react";
 import useAuth from './../../Hooks/useAuth';
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddJob = () => {
   const {user} = useAuth();
@@ -22,8 +24,19 @@ const AddJob = () => {
     newJob.job_responsibilities = newJob.job_responsibilities.split(",").map(respon => respon.trim())
 
      console.log(newJob);
-  }
-
+     console.log(Object.keys(newJob).length);
+        // newJob object e status name arekta property dhukabo
+        newJob.status = "active";
+      axios.post("http://localhost:5000/jobs", newJob)
+      .then(res=>{
+        if(res.data.insertedId){
+          Swal.fire("Your Job has been saved successfully.")
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    }
   return (
     <div className="max-w-11/12 mx-auto">
       <h2>Add a Job</h2>
@@ -116,5 +129,6 @@ const AddJob = () => {
     </div>
   );
 };
+
 
 export default AddJob;

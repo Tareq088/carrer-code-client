@@ -17,7 +17,7 @@ const JobApply = () => {
     const github = form.github.value;
     const resume = form.resume.value;
     console.log(linkedin,github,resume);
-    const applicant = { 
+    const application = { 
       jobId,
       applicant: user.email,
       linkedin,
@@ -25,7 +25,7 @@ const JobApply = () => {
 
     }
             //AXIOS POST     
-    axios.post("http://localhost:5000/applicants",applicant)
+    axios.post("http://localhost:5000/applications",application)
     .then(res =>{
       console.log(res.data);
       if(res.data.insertedId){
