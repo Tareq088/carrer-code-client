@@ -22,8 +22,8 @@ const JobApply = () => {
       applicant: user.email,
       linkedin,
       github, resume
-
     }
+    console.log(application);
             //AXIOS POST     
     axios.post("http://localhost:5000/applications",application)
     .then(res =>{
@@ -33,7 +33,7 @@ const JobApply = () => {
       }
     })
     .catch(error =>{
-      console.log(error)
+      console.log(error);
     })
  
   };
