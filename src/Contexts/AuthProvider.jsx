@@ -36,14 +36,23 @@ const AuthProvider = ({children}) => {
             if(currentUser?.email){
                 const userData = {email: currentUser.email};
                             // jei token generate korechi sekhane data pathabo
-                axios.post('http://localhost:5000/jwt',userData)
-                .then(res=>{
-                    console.log("token after jwt", res.data);
-                                    // local storage e token rakhte chaile
-                    const token = res.data.token;
-                    localStorage.setItem("token", token)
+                                    // module 60.2
+                // axios.post('http://localhost:5000/jwt',userData)
+                // .then(res=>{
+                //     console.log("token after jwt", res.data);
+                //                     // local storage e token rakhte chaile
+                //     const token = res.data.token;
+                //     localStorage.setItem("token", token)
+                // })
+                // .catch(error=>{
+                //     console.log(error)
+                // })
+                                            // module 60.4
+                axios.post('http://localhost:5000/jwt', userData, {withCredentials:true})
+                .then(res =>{
+                    console.log(res.data)
                 })
-                .catch(error=>{
+                .catch(error =>{
                     console.log(error)
                 })
             }
